@@ -12,6 +12,8 @@ namespace dotnetapp.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Machine"] = Environment.MachineName;
+            
             return View();
         }
 
