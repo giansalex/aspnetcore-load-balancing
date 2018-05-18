@@ -3,6 +3,8 @@ version: "3"
 services:
   core-app:
     build: ./dotnetapp
+    networks:
+      - backend
 
   nginx:
     build: ./nginx
@@ -12,5 +14,8 @@ services:
       - "443:443"
     depends_on:
       - core-app
-    links:
-      - core-app
+    networks:
+      - backend
+
+networks:
+  backend:
