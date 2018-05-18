@@ -1,6 +1,8 @@
 # ASP.NET Core HTTPS & Load balancing
 Deploy an ASP.NET Core application with HTTPS & Load balancing using Docker and NGINX as reverse proxy.
 
+![docker-nginx](https://raw.githubusercontent.com/giansalex/aspnetcore-load-balancing/master/doc/target-architecture-docker-nginx-ketrel.png "ASP.NET CORE NGINX")
+
 To get started:
 
 ```bash
