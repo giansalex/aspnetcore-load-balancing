@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  core-app:
+    build: ./dotnetapp
+
+  nginx:
+    build: ./nginx
+    container_name: core-app.local
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - core-app
+    links:
+      - core-app
