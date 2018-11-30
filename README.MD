@@ -6,6 +6,8 @@ Deploy an ASP.NET Core application with HTTPS & Load balancing using Docker and 
 To get started:
 
 ```bash
+    git clone https://github.com/giansalex/aspnetcore-load-balancing.git
+    cd aspnetcore-load-balancing
     docker-compose build
     docker-compose up -d --scale core-app=4 --no-recreate
 ```
