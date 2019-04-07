@@ -6,10 +6,10 @@ Deploy an ASP.NET Core application with HTTPS & Load balancing using Docker and 
 To get started:
 
 ```bash
-    git clone https://github.com/giansalex/aspnetcore-load-balancing.git
-    cd aspnetcore-load-balancing
-    docker-compose build
-    docker-compose up -d --scale core-app=4 --no-recreate
+git clone https://github.com/giansalex/aspnetcore-load-balancing.git
+cd aspnetcore-load-balancing
+docker-compose build
+docker-compose up -d --scale core-app=4 --no-recreate
 ```
 
 > IMPORTANT: Due to NGINX (Free version) limiations, current configuration is set to work with a fixed scale of 4 nodes.
