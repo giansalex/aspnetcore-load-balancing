@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ASP.NET CORE 2</title>
+    <title>@ViewData["Title"] - ASP.NET CORE 3</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/bootstrap.css" />
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ASP.NET CORE 2</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ASP.NET CORE 3</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -33,7 +33,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - Giansalex</p>
+            <p>&copy; @DateTime.Now.Year - Giansalex</p>
         </footer>
     </div>
 
