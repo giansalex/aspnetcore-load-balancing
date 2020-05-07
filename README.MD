@@ -12,6 +12,10 @@ docker-compose build
 docker-compose up -d --scale core-app=4 --no-recreate
 ```
 
+Navigate to https://localhost
+
+![app-on-browser](https://raw.githubusercontent.com/giansalex/aspnetcore-load-balancing/master/doc/dotnetapp-on-browser.gif)
+
 > IMPORTANT: Due to NGINX (Free version) limiations, current configuration is set to work with a fixed scale of 4 nodes.
 With NGINX Plus, additional changes might be applied to scale up and down dynamically.
 
