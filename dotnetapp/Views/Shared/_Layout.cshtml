@@ -1,26 +1,17 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ASP.NET CORE 3</title>
+    <title>@ViewData["Title"] - ASP.NET CORE</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ASP.NET CORE 3</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ASP.NET CORE</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -36,14 +27,6 @@
             <p>&copy; @DateTime.Now.Year - Giansalex</p>
         </footer>
     </div>
-
-    <environment include="Development">
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
