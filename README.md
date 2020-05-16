@@ -3,7 +3,7 @@ Deploy an ASP.NET Core application with HTTPS & Load balancing using Docker.
 
 
 ## Nginx
-Using nginx as reverse proxy.
+Using [Nginx](https://nginx.org/) web server.
 
 ![docker-nginx](https://raw.githubusercontent.com/giansalex/aspnetcore-load-balancing/master/doc/target-architecture-docker-nginx-ketrel.png "ASP.NET CORE NGINX")
 
@@ -28,6 +28,18 @@ cd aspnetcore-load-balancing
 docker-compose -f docker-compose.traefik.yml build
 docker-compose -f docker-compose.traefik.yml up -d --scale core-app=4
 ```
+
+## Caddy
+Using [Caddy Server](https://caddyserver.com/) web server.
+
+```bash
+git clone https://github.com/giansalex/aspnetcore-load-balancing.git
+cd aspnetcore-load-balancing
+docker-compose -f docker-compose.caddy.yml build
+docker-compose -f docker-compose.caddy.yml up -d --scale core-app=4 --no-recreate
+```
+
+## Browser
 
 Navigate to https://localhost
 
