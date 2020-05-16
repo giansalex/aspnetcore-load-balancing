@@ -15,7 +15,7 @@ services:
       - "./traefik/traefik.toml:/etc/traefik/traefik.toml"
       - "./traefik/dyn.toml:/etc/traefik/dyn.toml"
 
-  app:
+  core-app:
     build: ./dotnetapp
     labels:
       - "traefik.enable=true"

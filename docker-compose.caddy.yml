@@ -7,6 +7,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - core-app
     volumes:
       - "caddy_data:/data"
       - "caddy_config:/config"

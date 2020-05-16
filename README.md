@@ -26,7 +26,7 @@ Using [Traefik](https://traefik.io/) Edge Router.
 git clone https://github.com/giansalex/aspnetcore-load-balancing.git
 cd aspnetcore-load-balancing
 docker-compose -f docker-compose.traefik.yml build
-docker-compose -f docker-compose.traefik.yml up -d --scale app=4
+docker-compose -f docker-compose.traefik.yml up -d --scale core-app=4
 ```
 
 Navigate to https://localhost
