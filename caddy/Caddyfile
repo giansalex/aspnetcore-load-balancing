@@ -1,0 +1,9 @@
+localhost
+
+reverse_proxy / {
+	to aspnetcore-load-balancing_core-app_1:80 aspnetcore-load-balancing_core-app_2:80 aspnetcore-load-balancing_core-app_3:80 aspnetcore-load-balancing_core-app_4:80
+	lb_policy   random_choose 2
+	health_path /health
+	health_status 200
+	health_interval 10s
+}
