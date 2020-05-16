@@ -1,0 +1,18 @@
+[api]
+  insecure = true
+  dashboard = true
+
+[entrypoints]
+  [entrypoints.web]
+    address = ":80"
+
+  [entrypoints.websecure]
+    address = ":443"
+
+[providers]
+  [providers.docker]
+    exposedByDefault = false
+
+  [providers.file]
+    filename = "/etc/traefik/dyn.toml"
+

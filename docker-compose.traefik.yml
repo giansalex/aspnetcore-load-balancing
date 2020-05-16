@@ -1,0 +1,29 @@
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:v2.2"
+    container_name: "traefik"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik/certs:/etc/traefik/certs"
+      - "./traefik/traefik.toml:/etc/traefik/traefik.toml"
+      - "./traefik/dyn.toml:/etc/traefik/dyn.toml"
+
+  app:
+    build: ./dotnetapp
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.app.loadbalancer.server.port=80"
+      - "traefik.http.routers.app.rule=Host(`localhost`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls=true"
+      - "traefik.http.routers.app-http.rule=Host(`localhost`)"
+      - "traefik.http.routers.app-http.entrypoints=web"
+      - "traefik.http.routers.app-http.middlewares=redirect-secure"
+      - "traefik.http.middlewares.redirect-secure.redirectscheme.scheme=https"
