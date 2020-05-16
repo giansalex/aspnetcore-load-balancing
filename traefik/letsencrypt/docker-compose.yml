@@ -1,0 +1,61 @@
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:v2.2"
+    container_name: "traefik"
+    command:
+      - "--api=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--certificatesresolvers.le.acme.email=admin@example.com"
+      - "--certificatesresolvers.le.acme.tlschallenge=true"
+      - "--certificatesresolvers.le.acme.storage=/etc/traefik/acme/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "//var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./acme:/etc/traefik/acme"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`traefik.example.com`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0"
+      - "traefik.http.routers.api.tls=true"
+      - "traefik.http.routers.api.tls.certresolver=le"
+      - "traefik.http.routers.api.entrypoints=websecure"
+
+  app:
+    image: app
+    environment:
+        ConnectionStrings__DefaultConnection: 'server=mysql;port=3306;database=app;User=app;Password=app;'
+    depends_on:
+      - mysql
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`example.com`)"
+      - "traefik.http.routers.quertium.tls=true"
+      - "traefik.http.routers.quertium.tls.certresolver=le"
+      - "traefik.http.routers.quertium.entrypoints=websecure"
+      - "traefik.http.routers.quertium-http.rule=Host(`example.com`)"
+      - "traefik.http.routers.quertium-http.entrypoints=web"
+
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: xxxxxx
+        MYSQL_DATABASE: app
+        MYSQL_USER: app
+        MYSQL_PASSWORD: app
+    volumes:
+        - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
+          
