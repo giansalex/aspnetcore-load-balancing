@@ -1,4 +1,4 @@
-FROM nginx:1.18-alpine
+FROM nginx:1.21-alpine
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./certs/server.crt /etc/nginx/server.crt
